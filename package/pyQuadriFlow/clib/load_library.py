@@ -11,7 +11,7 @@ def load_library():
     elif platform == 'win32':        
         here = os.path.dirname(__file__).replace('\\','/') 
         #QuadriFlow_clib = ctypes.CDLL(os.path.join(here,"ctypes_QuadriFlow.dll"))
-        QuadriFlow_clib = ctypes.CDLL(os.path.join(here,"blender_quadriflow.dll"))
+        QuadriFlow_clib = ctypes.CDLL(os.path.join(here,"ctypes_QuadriFlow.dll"))
     return QuadriFlow_clib
 
 if __name__ == "__main__":
