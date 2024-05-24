@@ -191,15 +191,14 @@ public:
     }
 };
 
-class MESH_DATA {
-public:
+typedef struct MD {
     int nn_verts = 0;
     int nn_faces = 0;
     float* vertices = NULL;
     int* faces = NULL;
     bool has_error = false;
     char* str_error = NULL;
-};
+} MESH_DATA;
 
 class quadriflow {
 public:
@@ -348,6 +347,7 @@ extern "C"{
         try {
             quadriflow_new.remesh_quadriflow(faces, seed, n_verts, n_faces, mesh_vertices, faceVerts, flag_preserve_sharp, flag_preserve_boundary, flag_adaptive_scale, flag_aggresive_sat, flag_minimum_cost_flow);
             mesh_data->has_error = false;
+            mesh_data->str_error = NULL;
         }catch (const std::exception& ex) {
             mesh_data->has_error = true;
             mesh_data->nn_verts = 0;
@@ -407,26 +407,25 @@ extern "C"{
     /// </summary>
     /// <param name="md"></param>
     /// <returns></returns>
-    DLLEXPORT void free_mem(MESH_DATA md) {
-        if (md.str_error != NULL) {
-            free( (char*)md.str_error); // https://stackoverflow.com/questions/2819535/unable-to-free-const-pointers-in-c
-            md.str_error = NULL;
+    DLLEXPORT void free_mem(MESH_DATA *md) {
+        if (md->str_error != NULL) {
+            free( (char*)md->str_error); // https://stackoverflow.com/questions/2819535/unable-to-free-const-pointers-in-c
+            md->str_error = NULL;
         }
-        if (md.vertices != NULL) {
-            free(md.vertices);
-            md.vertices = NULL;
-            md.nn_verts = 0;
+        if (md->vertices != NULL) {
+            free(md->vertices);
+            md->vertices = NULL;
+            md->nn_verts = 0;
         }
-        if (md.faces != NULL) {
-            free(md.faces);
-            md.faces = NULL;
-            md.nn_faces = 0;
+        if (md->faces != NULL) {
+            free(md->faces);
+            md->faces = NULL;
+            md->nn_faces = 0;
         }
     }
 }
 
 int main(int argc, char** argv) {
-    printf("Start testing quadriflow!!!");
     float mesh_vertices[][3] = {
         {1.83936208486557e-08, 7.450580596923828e-09, -1.0}, {0.0, 0.0, 1.0}, {0.0, 1.0, -1.0}, {0.19509032368659973, 0.9807852506637573, -1.0}, {0.3826834559440613, 0.9238795042037964, -1.0}, {0.5555702447891235, 0.8314695954322815, -1.0}, {0.7071067690849304, 0.7071067690849304, -1.0}, {0.8314695954322815, 0.5555702447891235, -1.0}, {0.9238795042037964, 0.3826834559440613, -1.0}, {0.9807852506637573, 0.19509032368659973, -1.0}, {1.0, 0.0, -1.0}, {0.9807852506637573, -0.19509032368659973, -1.0}, {0.9238795042037964, -0.3826834559440613, -1.0}, {0.8314695954322815, -0.5555702447891235, -1.0}, {0.7071067690849304, -0.7071067690849304, -1.0}, {0.5555702447891235, -0.8314695954322815, -1.0}, {0.3826834559440613, -0.9238795042037964, -1.0}, {0.19509032368659973, -0.9807852506637573, -1.0}, {0.0, -1.0, -1.0}, {-0.19509032368659973, -0.9807852506637573, -1.0}, {-0.3826834559440613, -0.9238795042037964, -1.0}, {-0.5555702447891235, -0.8314695954322815, -1.0}, {-0.7071067690849304, -0.7071067690849304, -1.0}, {-0.8314695954322815, -0.5555702447891235, -1.0}, {-0.9238795042037964, -0.3826834559440613, -1.0}, {-0.9807852506637573, -0.19509032368659973, -1.0}, {-1.0, 0.0, -1.0}, {-0.9807852506637573, 0.19509032368659973, -1.0}, {-0.9238795042037964, 0.3826834559440613, -1.0}, {-0.8314695954322815, 0.5555702447891235, -1.0}, {-0.7071067690849304, 0.7071067690849304, -1.0}, {-0.5555702447891235, 0.8314695954322815, -1.0}, {-0.3826834559440613, 0.9238795042037964, -1.0}, {-0.19509032368659973, 0.9807852506637573, -1.0},
     };
