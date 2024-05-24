@@ -15,13 +15,13 @@ setup(
     packages = find_packages(),
     include_package_data=True,
     package_data={f'{NAME}.clib':['*.so','*.dll']}, # https://stackoverflow.com/questions/70334648/how-to-correctly-install-data-files-with-setup-py
-    install_requires = ["numpy"],    
+    install_requires = [],    
     keywords = ['quadriflow', 'quad', 'remeshing', 'quadrangulation',],
     classifiers= [
-        "Development Status :: 1 - Alpha",
+        "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",        
         "Programming Language :: Python :: 3",        
         "Operating System :: Microsoft :: Windows",
-        "Operating System :: Linux",
+        "Operating System :: POSIX :: Linux",
     ]
 )
