@@ -1,6 +1,12 @@
 ## Description
 
-This project is a Python wrapper of https://github.com/Satabol/QuadriFlow This wrapper is used by a Blender addon [Sverchok](https://github.com/nortikin/sverchok) for a node "quadriflow":
+This project is a Python wrapper of https://github.com/Satabol/QuadriFlow (is a fork of https://github.com/hjwdzh/QuadriFlow with minor). Quadriflow used in Blender:
+
+![image](https://github.com/satabol/QuadriFlow/assets/14288520/56dd4baf-284f-4cbb-b866-61b434e44b1b)
+
+and has no python api for bmesh.
+
+Now this wrapper is used by a Blender addon [Sverchok](https://github.com/nortikin/sverchok) for a node "quadriflow":
 
 ![image](https://github.com/satabol/QuadriFlow/assets/14288520/8fe337c4-d84a-4d5f-9c1e-34a4cb78f05f)
 
