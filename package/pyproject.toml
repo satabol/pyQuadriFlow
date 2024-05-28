@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyQuadriFlow"
+version = "0.0.4"
+authors = [
+  { name="Satabol", email="satabol@yandex.ru" },
+]
+description = "Python QuadriFlow wrapper"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ['quadriflow', 'quad', 'remeshing', 'quadrangulation',]
+dependencies = []
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",        
+    "Programming Language :: Python :: 3",        
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
+]
+
+[project.urls]
+Homepage = "https://github.com/satabol/pyQuadriFlow"
+Issues = "https://github.com/satabol/pyQuadriFlow/issues"
