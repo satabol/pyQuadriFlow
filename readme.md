@@ -1,6 +1,6 @@
 ## Description
 
-This project is a Python wrapper of https://github.com/Satabol/QuadriFlow (is a fork of https://github.com/hjwdzh/QuadriFlow with minor). Quadriflow used in Blender:
+This project is a Python wrapper (https://pypi.org/project/pyQuadriFlow/) of https://github.com/Satabol/QuadriFlow (is a fork of https://github.com/hjwdzh/QuadriFlow with minor). Quadriflow used in Blender:
 
 ![image](https://github.com/satabol/QuadriFlow/assets/14288520/56dd4baf-284f-4cbb-b866-61b434e44b1b)
 
